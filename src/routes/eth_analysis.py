@@ -26,8 +26,8 @@ class AIChatSchema(Schema):
     question = fields.Str(required=True, validate=validate.Length(min=1, max=1000))
 
 class AnalysisRequestSchema(Schema):
-    use_cached_data = fields.Bool(missing=False)
-    include_ai_insights = fields.Bool(missing=True)
+    use_cached_data = fields.Bool(load_default=False)
+    include_ai_insights = fields.Bool(load_default=True)
 
 @eth_bp.route('/market-data', methods=['GET'])
 def get_market_data():
